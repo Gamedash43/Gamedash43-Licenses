@@ -7,7 +7,7 @@ Welcome to the repository for the Dash Minecraft Content Licenses (Dash MCL). Th
 - **Dash MCL ND 1.0:**  
   A strict "No Derivatives" license that prohibits any modifications or public distribution of the original Material without explicit approval. It is intended to maintain full control over my creative work.
 
-- **Dash MCL Open 1.1:**  
+- **Dash MCL Open 1.0:**  
   A more open variant that permits the creation and distribution of Modified Works. Modified Works may be licensed under terms chosen by the Licensee, provided they do not contain substantial verbatim copies of the original Material and include proper attribution via the Official Download Link.
 
 - **Dash MCL Public 1.0:**  
