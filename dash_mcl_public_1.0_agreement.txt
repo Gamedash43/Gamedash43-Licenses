@@ -1,0 +1,21 @@
+Dash MCL Public 1.0 (Dash Minecraft Content License – Public Variant)
+-----------------------------------------------------------------------
+This License Agreement ("Agreement") is made by and between Gamedash43 ("The Creator") and the user ("Licensee") of the licensed material ("Material"), which includes Minecraft datapacks, mods, and resource packs. By using the Material, the Licensee agrees to be bound by the terms of this Agreement.
+
+1. License Grant
+   The Creator hereby grants the Licensee a worldwide, royalty-free, non-exclusive license to use, reproduce, modify, distribute, display, perform, and otherwise exploit the Material for any purpose, including commercial purposes. This license applies to the Material in its original form as well as any Modified Works, provided that the terms of Section 2 are met.
+
+2. Attribution
+   Any use of the Material, including in Modified Works, must include clear and visible attribution to The Creator. The recommended attribution is:
+   
+       "Material by Gamedash43, available at [Official Download Link]."
+   
+   This attribution must appear in a manner that is reasonably visible (e.g., in the description of a video, on a webpage, or in accompanying documentation) wherever the Material is publicly distributed.
+
+3. Disclaimer of Warranties
+   THE MATERIAL IS PROVIDED "AS-IS" WITHOUT ANY WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. THE CREATOR SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THE MATERIAL.
+
+4. General Provisions
+   This Agreement constitutes the entire agreement between the parties regarding the Material. Any modifications to this Agreement must be made in writing and agreed to by both parties. This Agreement shall be governed by and construed in accordance with the laws of the United States of America.
+-----------------------------------------------------------------------
+End of Dash MCL Public 1.0
