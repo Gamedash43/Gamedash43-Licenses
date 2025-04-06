@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dash MCL Licenses Repository</title>
-  
-  <!-- Favicon: Use your logo file as the browser tab icon -->
-  <link rel="icon" type="image/png" href="logo.png">
-  
-  <!-- Import Google Font: Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Google Font: Roboto -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    /* DARK MODE STYLING WITH BACKGROUND IMAGE OVERLAY */
+    /* Dark background with overlay */
     body {
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                  url('background.jpg') no-repeat center center fixed;
+        url("background.jpg") no-repeat center center fixed;
       background-size: cover;
       color: #e0e0e0;
-      font-family: 'Roboto', sans-serif;
+      font-family: "Roboto", sans-serif;
       margin: 0;
       padding: 0;
     }
 
-    /* HEADER */
+    /* Header */
     header {
       display: flex;
       align-items: center;
@@ -40,14 +43,14 @@
       margin: 0;
     }
     header h1 a {
-      color: #805b87; /* Title text color */
+      color: #805b87;
       text-decoration: none;
     }
     header h1 a:hover {
       text-decoration: underline;
     }
 
-    /* TABS */
+    /* Tabs */
     .tabs {
       display: flex;
       justify-content: center;
@@ -69,18 +72,20 @@
       background-color: #2a2a2a;
       border-radius: 8px;
     }
-    .tab:hover, .tab.active {
+    .tab:hover,
+    .tab.active {
       background-color: #333;
     }
-    /* Icons in the tabs */
+    /* Tab icons */
     .tab svg {
       width: 24px;
       height: 24px;
       min-width: 24px;
       min-height: 24px;
+      fill: #9c7ca8;
     }
 
-    /* MAIN CONTAINER */
+    /* Container */
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -95,35 +100,56 @@
       display: block;
     }
 
-    /* BOXES */
+    /* Boxes */
     .box {
       border: 1px solid #333;
       background-color: #1f1f1f;
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      position: relative;
     }
     .box-title {
       font-size: 1.2em;
       font-weight: bold;
       margin-bottom: 10px;
       color: #805b87;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* LICENSE TEXT + THEME TOGGLE */
+    /* License text + theme toggle */
     .license-text {
       background-color: #121212;
       border: 1px solid #333;
       padding: 10px;
       border-radius: 10px;
-      position: relative;
       margin-top: 10px;
+      position: relative;
     }
+    pre {
+      margin: 0;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 380px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+    .dark-mode-text {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    .light-mode-text {
+      background-color: #fefefe;
+      color: #000;
+    }
+
+    /* Toggle button */
     .toggle-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
       background-color: #2a2a2a;
       color: #e0e0e0;
       border: 1px solid #444;
@@ -133,37 +159,54 @@
       font-weight: bold;
       font-size: 0.85em;
       transition: background-color 0.2s ease;
+      margin-left: 15px; /* space from the title text */
     }
     .toggle-btn:hover {
       background-color: #444;
     }
-    pre {
-      margin: 0;
-      padding: 10px;
-      border-radius: 6px;
-      max-height: 380px; /* Enough room for the toggle button above */
-      overflow: auto;
-      white-space: pre-wrap;      /* Wrap long lines */
-      word-wrap: break-word;      /* Break words that exceed container width */
-      word-break: break-word;     /* Break large words if needed */
+
+    /* Official Download Links Box */
+    .link-box {
+      border: 1px solid #333;
+      background-color: #1f1f1f;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     }
-    /* Dark + Light modes for the <pre> text container */
-    .dark-mode-text {
-      background-color: #121212;
+    .link-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #2a2a2a;
       color: #e0e0e0;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      transition: background-color 0.2s ease;
+      font-weight: bold;
     }
-    .light-mode-text {
-      background-color: #fefefe;
-      color: #000000;
+    .download-btn:hover {
+      background-color: #444;
+    }
+    .download-btn img {
+      width: 20px;
+      height: 20px;
     }
 
-    /* MATERIALS LIST */
+    /* Materials list */
     ul.materials {
       list-style-type: disc;
       margin-left: 20px;
     }
 
-    /* FOOTER */
+    /* Footer */
     footer {
       text-align: center;
       padding: 10px;
@@ -175,35 +218,35 @@
   </style>
 
   <script>
-    // Load license texts via fetch
-    function loadLicenseTexts() {
-      fetch('dash_mcl_nd_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('ndLicenseText').textContent = data;
-        });
-      fetch('dash_mcl_open_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('openLicenseText').textContent = data;
-        });
-      fetch('dash_mcl_public_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('publicLicenseText').textContent = data;
-        });
-    }
-
     // Toggle theme for a license text <pre>
     function toggleLicenseTheme(preId) {
       const pre = document.getElementById(preId);
-      if (pre.classList.contains('dark-mode-text')) {
-        pre.classList.remove('dark-mode-text');
-        pre.classList.add('light-mode-text');
+      if (pre.classList.contains("dark-mode-text")) {
+        pre.classList.remove("dark-mode-text");
+        pre.classList.add("light-mode-text");
       } else {
-        pre.classList.remove('light-mode-text');
-        pre.classList.add('dark-mode-text');
+        pre.classList.remove("light-mode-text");
+        pre.classList.add("dark-mode-text");
       }
+    }
+
+    // Load license texts via fetch
+    function loadLicenseTexts() {
+      fetch("dash_mcl_nd_1.0_agreement.txt")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("ndLicenseText").textContent = data;
+        });
+      fetch("dash_mcl_open_1.0_agreement.txt")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("openLicenseText").textContent = data;
+        });
+      fetch("dash_mcl_public_1.0_agreement.txt")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("publicLicenseText").textContent = data;
+        });
     }
 
     // Show the specified section and update URL hash
@@ -216,12 +259,14 @@
       }
       document.getElementById(sectionId).classList.add("active");
       document.getElementById("tab-" + sectionId).classList.add("active");
-      window.history.replaceState(null, null, '#' + sectionId);
+      window.history.replaceState(null, null, "#" + sectionId);
     }
 
-    // On DOM load, fetch license texts and show correct tab from hash
     document.addEventListener("DOMContentLoaded", () => {
+      // Load the license text files
       loadLicenseTexts();
+
+      // Show the correct tab if there's a hash, otherwise default to #nd
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
@@ -233,42 +278,66 @@
 </head>
 <body>
   <header>
-    <!-- Replace "logo.png" with your actual logo file -->
-    <img src="logo.png" alt="Logo">
-    <h1><a href="https://github.com/Gamedash43/dash-mcl-licenses" target="_blank">Dash MCL Licenses Repository</a></h1>
+    <img src="logo.png" alt="Logo" />
+    <h1>
+      <a href="https://github.com/Gamedash43/dash-mcl-licenses" target="_blank"
+        >Dash MCL Licenses Repository</a
+      >
+    </h1>
   </header>
-  
+
   <div class="tabs">
     <!-- No Derivatives Tab -->
     <div id="tab-nd" class="tab" onclick="showSection('nd')">
-      <!-- Locked icon in muted purple -->
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#9c7ca8" viewBox="0 0 16 16">
-        <path d="M8 1a4 4 0 0 0-4 4v2H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4zm3 7H5V5a3 3 0 0 1 6 0v3z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path
+          d="M8 1a4 4 0 0 0-4 4v2H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h10a1
+             1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4zm3 7H5V5a3 3
+             0 0 1 6 0v3z"
+        ></path>
       </svg>
       No Derivatives Variant
     </div>
     <!-- Open Tab -->
     <div id="tab-open" class="tab" onclick="showSection('open')">
-      <!-- Unlocked icon in muted purple -->
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#9c7ca8" viewBox="0 0 16 16">
-        <path d="M11 1a4 4 0 0 0-8 0h1a3 3 0 0 1 6 0v3H5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-1V1z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path
+          d="M11 1a4 4 0 0 0-8 0h1a3 3 0 0 1 6 0v3H5a1 1 0 0 0-1
+             1v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-1V1z"
+        ></path>
       </svg>
       Open Variant
     </div>
     <!-- Public Tab -->
     <div id="tab-public" class="tab" onclick="showSection('public')">
-      <!-- Globe icon in muted purple -->
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#9c7ca8" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm3.468 12.37a6.995 6.995 0 0 1-6.936 0 12.64 12.64 0 0 0 6.936 0zM8 1a7 7 0 0 1 6.727 5.034A12.71 12.71 0 0 0 8 4.986 12.71 12.71 0 0 0 1.273 6.034 7 7 0 0 1 8 1zM1 8a6.997 6.997 0 0 1 3.468-5.37 12.64 12.64 0 0 0-2.395 6.37 12.64 12.64 0 0 0 2.395 6.37A6.997 6.997 0 0 1 1 8zm14 0a6.997 6.997 0 0 1-3.468 5.37 12.64 12.64 0 0 0 2.395-6.37 12.64 12.64 0 0 0-2.395-6.37A6.997 6.997 0 0 1 15 8z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path
+          d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8
+             0zm3.468 12.37a6.995 6.995 0 0
+             1-6.936 0 12.64 12.64 0 0 0
+             6.936 0zM8 1a7 7 0 0 1 6.727
+             5.034A12.71 12.71 0 0 0 8
+             4.986 12.71 12.71 0 0 0 1.273
+             6.034 7 7 0 0 1 8 1zM1 8a6.997
+             6.997 0 0 1 3.468-5.37 12.64
+             12.64 0 0 0-2.395 6.37 12.64
+             12.64 0 0 0 2.395 6.37A6.997
+             6.997 0 0 1 1 8zm14 0a6.997
+             6.997 0 0 1-3.468 5.37 12.64
+             12.64 0 0 0 2.395-6.37 12.64
+             12.64 0 0 0-2.395-6.37A6.997
+             6.997 0 0 1 15 8z"
+        ></path>
       </svg>
       Public Variant
     </div>
   </div>
-  
+
   <div class="container">
     <!-- No Derivatives Section -->
     <div id="nd" class="section">
       <h2>Dash MCL ND 1.0 License</h2>
+
       <!-- Summary Box -->
       <div class="box">
         <div class="box-title">Summary</div>
@@ -281,16 +350,34 @@
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
         </p>
       </div>
+
       <!-- Full License Text Box -->
       <div class="box">
-        <div class="box-title">Full License Text</div>
-        <div class="license-text">
-          <!-- Toggle button (optional if you want theme switching on the text) -->
+        <div class="box-title">
+          <span>Full License Text</span>
           <button class="toggle-btn" onclick="toggleLicenseTheme('ndLicenseText')">Toggle Theme</button>
-          <!-- The <pre> container to display license text -->
+        </div>
+        <div class="license-text">
           <pre id="ndLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
+
+      <!-- Official Download Links -->
+      <div class="link-box">
+        <div class="box-title">Official Download Pages</div>
+        <div class="link-buttons">
+          <!-- Example: Modrinth link -->
+          <a class="download-btn" href="#" target="_blank">
+            <img src="modrinth.png" alt="Modrinth" /> Modrinth
+          </a>
+          <!-- Example: Planet Minecraft link -->
+          <a class="download-btn" href="#" target="_blank">
+            <img src="planetminecraft.png" alt="Planet Minecraft" /> Planet Minecraft
+          </a>
+          <!-- Add more download buttons here if needed -->
+        </div>
+      </div>
+
       <!-- Licensed Materials Box -->
       <div class="box">
         <div class="box-title">Licensed Materials</div>
@@ -301,10 +388,11 @@
         </ul>
       </div>
     </div>
-    
+
     <!-- Open Variant Section -->
     <div id="open" class="section">
       <h2>Dash MCL Open 1.0 License</h2>
+
       <!-- Summary Box -->
       <div class="box">
         <div class="box-title">Summary</div>
@@ -317,14 +405,31 @@
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
         </p>
       </div>
+
       <!-- Full License Text Box -->
       <div class="box">
-        <div class="box-title">Full License Text</div>
-        <div class="license-text">
+        <div class="box-title">
+          <span>Full License Text</span>
           <button class="toggle-btn" onclick="toggleLicenseTheme('openLicenseText')">Toggle Theme</button>
+        </div>
+        <div class="license-text">
           <pre id="openLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
+
+      <!-- Official Download Links -->
+      <div class="link-box">
+        <div class="box-title">Official Download Pages</div>
+        <div class="link-buttons">
+          <a class="download-btn" href="#" target="_blank">
+            <img src="modrinth.png" alt="Modrinth" /> Modrinth
+          </a>
+          <a class="download-btn" href="#" target="_blank">
+            <img src="planetminecraft.png" alt="Planet Minecraft" /> Planet Minecraft
+          </a>
+        </div>
+      </div>
+
       <!-- Licensed Materials Box -->
       <div class="box">
         <div class="box-title">Licensed Materials</div>
@@ -335,10 +440,11 @@
         </ul>
       </div>
     </div>
-    
+
     <!-- Public Variant Section -->
     <div id="public" class="section">
       <h2>Dash MCL Public 1.0 License</h2>
+
       <!-- Summary Box -->
       <div class="box">
         <div class="box-title">Summary</div>
@@ -351,14 +457,31 @@
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
         </p>
       </div>
+
       <!-- Full License Text Box -->
       <div class="box">
-        <div class="box-title">Full License Text</div>
-        <div class="license-text">
+        <div class="box-title">
+          <span>Full License Text</span>
           <button class="toggle-btn" onclick="toggleLicenseTheme('publicLicenseText')">Toggle Theme</button>
+        </div>
+        <div class="license-text">
           <pre id="publicLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
+
+      <!-- Official Download Links -->
+      <div class="link-box">
+        <div class="box-title">Official Download Pages</div>
+        <div class="link-buttons">
+          <a class="download-btn" href="#" target="_blank">
+            <img src="modrinth.png" alt="Modrinth" /> Modrinth
+          </a>
+          <a class="download-btn" href="#" target="_blank">
+            <img src="planetminecraft.png" alt="Planet Minecraft" /> Planet Minecraft
+          </a>
+        </div>
+      </div>
+
       <!-- Licensed Materials Box -->
       <div class="box">
         <div class="box-title">Licensed Materials</div>
@@ -370,7 +493,7 @@
       </div>
     </div>
   </div>
-  
+
   <footer>
     <p>Maintained by Gamedash43</p>
   </footer>
@@ -387,7 +510,7 @@
         pre.classList.add('dark-mode-text');
       }
     }
-    
+
     /* Load license texts via fetch */
     function loadLicenseTexts() {
       fetch('dash_mcl_nd_1.0_agreement.txt')
@@ -403,25 +526,25 @@
 
     /* Show the specified section and update URL hash */
     function showSection(sectionId) {
-      const sections = document.getElementsByClassName("section");
-      const tabs = document.getElementsByClassName("tab");
+      const sections = document.getElementsByClassName('section');
+      const tabs = document.getElementsByClassName('tab');
       for (let i = 0; i < sections.length; i++) {
-        sections[i].classList.remove("active");
-        tabs[i].classList.remove("active");
+        sections[i].classList.remove('active');
+        tabs[i].classList.remove('active');
       }
-      document.getElementById(sectionId).classList.add("active");
-      document.getElementById("tab-" + sectionId).classList.add("active");
+      document.getElementById(sectionId).classList.add('active');
+      document.getElementById('tab-' + sectionId).classList.add('active');
       window.history.replaceState(null, null, '#' + sectionId);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       loadLicenseTexts();
       // Show the correct tab if there's a hash, otherwise default to #nd
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
       } else {
-        showSection("nd");
+        showSection('nd');
       }
     });
   </script>
