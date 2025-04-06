@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dash MCL Licenses Repository</title>
+  
   <!-- Favicon: Use your logo file as the browser tab icon -->
   <link rel="icon" type="image/png" href="logo.png">
+  
   <!-- Import Google Font: Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Dark mode styling with background image overlay */
+    /* DARK MODE STYLING WITH BACKGROUND IMAGE OVERLAY */
     body {
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                   url('background.jpg') no-repeat center center fixed;
@@ -19,6 +22,8 @@
       margin: 0;
       padding: 0;
     }
+
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -41,6 +46,8 @@
     header h1 a:hover {
       text-decoration: underline;
     }
+
+    /* TABS */
     .tabs {
       display: flex;
       justify-content: center;
@@ -65,12 +72,15 @@
     .tab:hover, .tab.active {
       background-color: #333;
     }
+    /* Icons in the tabs */
     .tab svg {
       width: 24px;
       height: 24px;
       min-width: 24px;
       min-height: 24px;
     }
+
+    /* MAIN CONTAINER */
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -84,6 +94,8 @@
     .section.active {
       display: block;
     }
+
+    /* BOXES */
     .box {
       border: 1px solid #333;
       background-color: #1f1f1f;
@@ -98,23 +110,60 @@
       margin-bottom: 10px;
       color: #805b87;
     }
+
+    /* LICENSE TEXT + THEME TOGGLE */
     .license-text {
       background-color: #121212;
       border: 1px solid #333;
       padding: 10px;
       border-radius: 10px;
-      white-space: pre-wrap;
+      position: relative;
+      margin-top: 10px;
     }
-    .license-text iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
+    .toggle-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      border: 1px solid #444;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.85em;
+      transition: background-color 0.2s ease;
+    }
+    .toggle-btn:hover {
+      background-color: #444;
+    }
+    pre {
+      margin: 0;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 380px; /* Enough room for the toggle button above */
       overflow: auto;
+      white-space: pre-wrap;      /* Wrap long lines */
+      word-wrap: break-word;      /* Break words that exceed container width */
+      word-break: break-word;     /* Break large words if needed */
     }
+    /* Dark + Light modes for the <pre> text container */
+    .dark-mode-text {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    .light-mode-text {
+      background-color: #fefefe;
+      color: #000000;
+    }
+
+    /* MATERIALS LIST */
     ul.materials {
       list-style-type: disc;
       margin-left: 20px;
     }
+
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 10px;
@@ -124,8 +173,40 @@
       color: #aaa;
     }
   </style>
+
   <script>
-    // Function to display the requested section and update the URL hash
+    // Load license texts via fetch
+    function loadLicenseTexts() {
+      fetch('dash_mcl_nd_1.0_agreement.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('ndLicenseText').textContent = data;
+        });
+      fetch('dash_mcl_open_1.0_agreement.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('openLicenseText').textContent = data;
+        });
+      fetch('dash_mcl_public_1.0_agreement.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('publicLicenseText').textContent = data;
+        });
+    }
+
+    // Toggle theme for a license text <pre>
+    function toggleLicenseTheme(preId) {
+      const pre = document.getElementById(preId);
+      if (pre.classList.contains('dark-mode-text')) {
+        pre.classList.remove('dark-mode-text');
+        pre.classList.add('light-mode-text');
+      } else {
+        pre.classList.remove('light-mode-text');
+        pre.classList.add('dark-mode-text');
+      }
+    }
+
+    // Show the specified section and update URL hash
     function showSection(sectionId) {
       const sections = document.getElementsByClassName("section");
       const tabs = document.getElementsByClassName("tab");
@@ -135,24 +216,10 @@
       }
       document.getElementById(sectionId).classList.add("active");
       document.getElementById("tab-" + sectionId).classList.add("active");
-      // Update the URL hash without reloading the page
       window.history.replaceState(null, null, '#' + sectionId);
     }
 
-    // Load license texts into the respective <pre> elements
-    function loadLicenseTexts() {
-      fetch('dash_mcl_nd_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => { document.getElementById('ndLicenseText').textContent = data; });
-      fetch('dash_mcl_open_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => { document.getElementById('openLicenseText').textContent = data; });
-      fetch('dash_mcl_public_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => { document.getElementById('publicLicenseText').textContent = data; });
-    }
-
-    // On DOM load, show the section based on the URL hash, or default to 'nd'
+    // On DOM load, fetch license texts and show correct tab from hash
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
       const hash = window.location.hash.substring(1);
@@ -172,6 +239,7 @@
   </header>
   
   <div class="tabs">
+    <!-- No Derivatives Tab -->
     <div id="tab-nd" class="tab" onclick="showSection('nd')">
       <!-- Locked icon in muted purple -->
       <svg xmlns="http://www.w3.org/2000/svg" fill="#9c7ca8" viewBox="0 0 16 16">
@@ -179,6 +247,7 @@
       </svg>
       No Derivatives Variant
     </div>
+    <!-- Open Tab -->
     <div id="tab-open" class="tab" onclick="showSection('open')">
       <!-- Unlocked icon in muted purple -->
       <svg xmlns="http://www.w3.org/2000/svg" fill="#9c7ca8" viewBox="0 0 16 16">
@@ -186,6 +255,7 @@
       </svg>
       Open Variant
     </div>
+    <!-- Public Tab -->
     <div id="tab-public" class="tab" onclick="showSection('public')">
       <!-- Globe icon in muted purple -->
       <svg xmlns="http://www.w3.org/2000/svg" fill="#9c7ca8" viewBox="0 0 16 16">
@@ -215,7 +285,9 @@
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
+          <!-- Toggle button (optional if you want theme switching on the text) -->
           <button class="toggle-btn" onclick="toggleLicenseTheme('ndLicenseText')">Toggle Theme</button>
+          <!-- The <pre> container to display license text -->
           <pre id="ndLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
@@ -304,26 +376,7 @@
   </footer>
 
   <script>
-    // Load license texts via fetch
-    function loadLicenseTexts() {
-      fetch('dash_mcl_nd_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('ndLicenseText').textContent = data;
-        });
-      fetch('dash_mcl_open_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('openLicenseText').textContent = data;
-        });
-      fetch('dash_mcl_public_1.0_agreement.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('publicLicenseText').textContent = data;
-        });
-    }
-
-    // Toggle theme for a license text <pre>
+    /* Toggle theme for a license text <pre> */
     function toggleLicenseTheme(preId) {
       const pre = document.getElementById(preId);
       if (pre.classList.contains('dark-mode-text')) {
@@ -334,8 +387,21 @@
         pre.classList.add('dark-mode-text');
       }
     }
+    
+    /* Load license texts via fetch */
+    function loadLicenseTexts() {
+      fetch('dash_mcl_nd_1.0_agreement.txt')
+        .then(response => response.text())
+        .then(data => { document.getElementById('ndLicenseText').textContent = data; });
+      fetch('dash_mcl_open_1.0_agreement.txt')
+        .then(response => response.text())
+        .then(data => { document.getElementById('openLicenseText').textContent = data; });
+      fetch('dash_mcl_public_1.0_agreement.txt')
+        .then(response => response.text())
+        .then(data => { document.getElementById('publicLicenseText').textContent = data; });
+    }
 
-    // Show the specified section and update URL hash
+    /* Show the specified section and update URL hash */
     function showSection(sectionId) {
       const sections = document.getElementsByClassName("section");
       const tabs = document.getElementsByClassName("tab");
@@ -350,7 +416,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
-      // Check if URL has hash; if so, show that section, otherwise default to "nd"
+      // Show the correct tab if there's a hash, otherwise default to #nd
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
