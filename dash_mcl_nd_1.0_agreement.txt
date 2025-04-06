@@ -38,9 +38,9 @@ This License Agreement ("Agreement") is a legal contract between Gamedash43 ("Th
 ---------------------------------------------------------
 3.1 Modpack Inclusion:
     a. The Material may be incorporated into a modpack under the following conditions:
-         i. For Public Modpacks (including revenue-generating ones): The Licensee must obtain explicit written permission from The Creator prior to inclusion.
-         ii. For Private Modpacks: The Material may be included without written approval, provided the modpack is not publicly accessible.
-         iii. The modpack’s download page must include the Official Download Link in a manner that is not purposefully hidden and is easy to access and view.
+         i. For unmodified modpacks: The Material may be included without written approval, provided that the modpack’s download page includes a clear and accessible Official Download Link directing users to the legitimate source.
+         ii. For modified modpacks: If the Material is modified in any way for inclusion in the modpack, explicit written approval must be obtained from The Creator prior to inclusion.
+         iii. The Licensee may add the .jar file directly into the modpack; however, distribution through CurseForge is preferred.
          iv. The inclusion of the Material in the modpack does not grant the Licensee any additional rights beyond those expressly set forth in this Agreement.
     b. The Licensee shall not use the Material outside of the approved modpack or as a standalone product, except as provided in Section 3.3.
 
