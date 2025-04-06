@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   
   <style>
-    /* Remove black tint: use the background image directly */
+    /* Remove black tint and show background directly */
     body {
       background: url("background.jpg") no-repeat center center fixed;
       background-size: cover;
@@ -20,6 +20,8 @@
       font-family: "Roboto", sans-serif;
       margin: 0;
       padding: 0;
+      /* Extra bottom margin so content doesn't overlap the fixed footer */
+      margin-bottom: 60px;
     }
     
     /* HEADER */
@@ -39,7 +41,7 @@
       margin: 0;
     }
     header h1 a {
-      color: #805b87; /* Title text color */
+      color: #805b87;
       text-decoration: none;
     }
     header h1 a:hover {
@@ -108,7 +110,7 @@
       justify-content: space-between;
     }
     
-    /* License Text + Theme Toggle */
+    /* LICENSE TEXT + THEME TOGGLE */
     .license-text {
       background-color: #121212;
       border: 1px solid #333;
@@ -136,7 +138,7 @@
       color: #000;
     }
     
-    /* Toggle Button Styling - placed next to the Full License Text title */
+    /* Toggle Button */
     .toggle-btn {
       background-color: #2a2a2a;
       color: #e0e0e0;
@@ -153,7 +155,7 @@
       background-color: #444;
     }
     
-    /* Official Download Links Box */
+    /* OFFICIAL DOWNLOAD LINKS BOX */
     .link-box {
       border: 1px solid #333;
       background-color: #1f1f1f;
@@ -170,7 +172,6 @@
     .download-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       background-color: #2a2a2a;
       color: #e0e0e0;
       text-decoration: none;
@@ -183,7 +184,6 @@
     .download-btn:hover {
       background-color: #444;
     }
-    /* Removed icons from download buttons as requested */
     
     /* MATERIALS LIST */
     ul.materials {
@@ -191,14 +191,25 @@
       margin-left: 20px;
     }
     
-    /* FOOTER */
+    /* FOOTER - pinned to bottom of screen */
     footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       text-align: center;
       padding: 10px;
       font-size: 0.9em;
       background-color: rgba(31, 31, 31, 0.9);
       border-top: 1px solid #333;
       color: #aaa;
+    }
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
   
@@ -243,12 +254,13 @@
     
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
-      // Show the correct tab if there's a hash, otherwise default to "nd"
+      // Show the correct tab if there's a hash, otherwise default to "requests"
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
       } else {
-        showSection("nd");
+        // Make "requests" the default tab
+        showSection("requests");
       }
     });
   </script>
@@ -263,7 +275,11 @@
     </h1>
   </header>
   
+  <!-- Tabs, with Requests first -->
   <div class="tabs">
+    <div id="tab-requests" class="tab" onclick="showSection('requests')">
+      Requests
+    </div>
     <div id="tab-nd" class="tab" onclick="showSection('nd')">
       No Derivatives Variant
     </div>
@@ -273,29 +289,44 @@
     <div id="tab-public" class="tab" onclick="showSection('public')">
       Public Variant
     </div>
-    <div id="tab-requests" class="tab" onclick="showSection('requests')">
-      Requests
-    </div>
   </div>
   
   <div class="container">
+    <!-- Requests Section (now first) -->
+    <div id="requests" class="section">
+      <h2>Requests</h2>
+      <div class="box">
+        <div class="box-title">Submit a Request</div>
+        <p>
+          For formal requests regarding license exceptions or approval from Gamedash43, please submit an issue on our GitHub repository. 
+          Include your project details and the reason for the exception or approval request.
+        </p>
+        <p>
+          You can submit your request by clicking the button below:
+        </p>
+        <div class="link-buttons">
+          <a class="download-btn" href="https://github.com/Gamedash43/dash-mcl-licenses/issues/new" target="_blank">
+            Submit Request
+          </a>
+        </div>
+      </div>
+    </div>
+    
     <!-- No Derivatives Section -->
     <div id="nd" class="section">
       <h2>Dash MCL ND 1.0 License</h2>
-      <!-- Summary Box -->
       <div class="box">
         <div class="box-title">Summary</div>
         <ul>
           <li>No modifications or public distribution of the original Material without explicit permission.</li>
           <li>Private server use is permitted under strict conditions; commercial use is disallowed.</li>
-          <li>For modpack inclusion: if unmodified, a link to an Official Download Page is sufficient; if modified, written approval is required. Inclusion of the .jar directly is allowed, though distribution via CurseForge is preferred.</li>
+          <li>For modpack inclusion: if unmodified, a link to an Official Download Page is sufficient; if modified, written approval is required.</li>
           <li>Clear attribution is required for any public display of the Material.</li>
         </ul>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
         </p>
       </div>
-      <!-- Full License Text Box -->
       <div class="box">
         <div class="box-title">
           <span>Full License Text</span>
@@ -305,7 +336,6 @@
           <pre id="ndLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
-      <!-- Official Download Links Box -->
       <div class="link-box">
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
@@ -317,7 +347,6 @@
           </a>
         </div>
       </div>
-      <!-- Licensed Materials Box -->
       <div class="box">
         <div class="box-title">Licensed Materials</div>
         <ul class="materials">
@@ -334,7 +363,6 @@
     <!-- Open Variant Section -->
     <div id="open" class="section">
       <h2>Dash MCL Open 1.0 License</h2>
-      <!-- Summary Box -->
       <div class="box">
         <div class="box-title">Summary</div>
         <ul>
@@ -346,7 +374,6 @@
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
         </p>
       </div>
-      <!-- Full License Text Box -->
       <div class="box">
         <div class="box-title">
           <span>Full License Text</span>
@@ -356,7 +383,6 @@
           <pre id="openLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
-      <!-- Official Download Links Box -->
       <div class="link-box">
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
@@ -368,7 +394,6 @@
           </a>
         </div>
       </div>
-      <!-- Licensed Materials Box -->
       <div class="box">
         <div class="box-title">Licensed Materials</div>
         <ul class="materials">
@@ -381,7 +406,6 @@
     <!-- Public Variant Section -->
     <div id="public" class="section">
       <h2>Dash MCL Public 1.0 License</h2>
-      <!-- Summary Box -->
       <div class="box">
         <div class="box-title">Summary</div>
         <ul>
@@ -393,7 +417,6 @@
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
         </p>
       </div>
-      <!-- Full License Text Box -->
       <div class="box">
         <div class="box-title">
           <span>Full License Text</span>
@@ -403,7 +426,6 @@
           <pre id="publicLicenseText" class="dark-mode-text"></pre>
         </div>
       </div>
-      <!-- Official Download Links Box -->
       <div class="link-box">
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
@@ -415,7 +437,6 @@
           </a>
         </div>
       </div>
-      <!-- Licensed Materials Box -->
       <div class="box">
         <div class="box-title">Licensed Materials</div>
         <ul class="materials">
@@ -423,33 +444,14 @@
         </ul>
       </div>
     </div>
-    
-    <!-- Requests Section -->
-    <div id="requests" class="section">
-      <h2>Requests</h2>
-      <div class="box">
-        <div class="box-title">Submit a Request</div>
-        <p>
-          For formal requests regarding license exceptions or approval from Gamedash43, please submit an issue on our GitHub repository. Include your project details and the reason for the exception or approval request.
-        </p>
-        <p>
-          You can submit your request by clicking the button below:
-        </p>
-        <div class="link-buttons">
-          <a class="download-btn" href="https://github.com/Gamedash43/dash-mcl-licenses/issues/new" target="_blank">
-            Submit Request
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
-
+  
   <footer>
-    <p>Maintained by Gamedash43</p>
+    <p>Maintained by <a href="https://github.com/Gamedash43" target="_blank">Gamedash43</a></p>
   </footer>
 
   <script>
-    // Toggle theme for a license text <pre>
+    /* Toggle theme for a license text <pre> */
     function toggleLicenseTheme(preId) {
       const pre = document.getElementById(preId);
       if (pre.classList.contains('dark-mode-text')) {
@@ -461,7 +463,7 @@
       }
     }
 
-    // Load license texts via fetch
+    /* Load license texts via fetch */
     function loadLicenseTexts() {
       fetch('dash_mcl_nd_1.0_agreement.txt')
         .then(response => response.text())
@@ -474,7 +476,7 @@
         .then(data => { document.getElementById('publicLicenseText').textContent = data; });
     }
 
-    // Show the specified section and update URL hash
+    /* Show the specified section and update URL hash */
     function showSection(sectionId) {
       const sections = document.getElementsByClassName('section');
       const tabs = document.getElementsByClassName('tab');
@@ -489,12 +491,12 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       loadLicenseTexts();
-      // Show the correct tab if there's a hash, otherwise default to "nd"
+      // Make "requests" the default tab if no hash
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
       } else {
-        showSection('nd');
+        showSection('requests');
       }
     });
   </script>
