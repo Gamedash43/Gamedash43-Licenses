@@ -75,6 +75,25 @@
       background-color: #333;
     }
     
+    /* Last Updated */
+    .last-updated {
+      text-align: center;
+      font-size: 0.8em;
+      color: #aaa;
+      margin-top: 10px;
+    }
+    
+    /* NOTICE */
+    .notice {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    
     /* MAIN CONTAINER */
     .container {
       max-width: 900px;
@@ -231,7 +250,8 @@
       }
     }
     
-    // Load license texts via fetch
+    // Load license texts via fetch.
+    // Note: The ND license is still loaded from "dash_mcl_nd_1.0_agreement.txt".
     function loadLicenseTexts() {
       fetch("dash_mcl_nd_1.0_agreement.txt")
         .then(response => response.text())
@@ -244,22 +264,35 @@
         .then(data => { document.getElementById("publicLicenseText").textContent = data; });
     }
     
-    // Show the specified section and update URL hash
+    // Show the specified section and update URL hash.
+    // For the "usage" page, the tab navigation is hidden.
     function showSection(sectionId) {
       const sections = document.getElementsByClassName("section");
-      const tabs = document.getElementsByClassName("tab");
+      // Remove active class from all sections
       for (let i = 0; i < sections.length; i++) {
         sections[i].classList.remove("active");
-        tabs[i].classList.remove("active");
       }
+      
+      if (sectionId === "usage") {
+        // Hide the tabs navigation for the usage page
+        document.querySelector(".tabs").style.display = "none";
+      } else {
+        // Show tabs navigation for non-usage pages
+        document.querySelector(".tabs").style.display = "flex";
+        const tabs = document.getElementsByClassName("tab");
+        for (let i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove("active");
+        }
+        document.getElementById("tab-" + sectionId).classList.add("active");
+      }
+      
       document.getElementById(sectionId).classList.add("active");
-      document.getElementById("tab-" + sectionId).classList.add("active");
       window.history.replaceState(null, null, "#" + sectionId);
     }
     
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
-      // Make "requests" the default tab if no hash
+      // Default to "requests" if no hash is provided.
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
@@ -279,7 +312,7 @@
     </h1>
   </header>
   
-  <!-- Tabs, with Requests first -->
+  <!-- Tabs (only shown when not viewing the usage page) -->
   <div class="tabs">
     <div id="tab-requests" class="tab" onclick="showSection('requests')">
       Requests
@@ -296,6 +329,14 @@
   </div>
   
   <div class="container">
+    <!-- Last Updated and Notice -->
+    <div class="last-updated">
+      Last Updated: April 6th 2025
+    </div>
+    <div class="notice">
+      By using, modifying, installing, or otherwise interacting with the Material, you agree to be bound by all the terms and conditions specified in the applicable License and Usage Guidelines for that work.
+    </div>
+    
     <!-- Requests Section (default if no hash) -->
     <div id="requests" class="section">
       <h2>Requests</h2>
@@ -324,7 +365,9 @@
         <ul>
           <li>No modifications or public distribution of the original Material without explicit permission.</li>
           <li>Private server use is permitted under strict conditions; commercial use is disallowed.</li>
-          <li>For modpack inclusion: if unmodified, a link to an Official Download Page is sufficient; if modified, written approval is required.</li>
+          <li>
+            <strong>Modpack Inclusion:</strong> Unmodified modpacks may include the Material provided the modpack’s download page features a clear, accessible Official Download Link. For modified modpacks, explicit written approval from Gamedash43 is required. The .jar file may be added directly, though distribution via CurseForge is preferred.
+          </li>
           <li>Clear attribution is required for any public display of the Material.</li>
         </ul>
         <p style="font-size:0.9em; color:#aaa;">
@@ -448,6 +491,25 @@
         </ul>
       </div>
     </div>
+    
+    <!-- Usage Section (separate page: no tab navigation) -->
+    <div id="usage" class="section">
+      <h2>Material Use on Modpacks and Servers</h2>
+      <p>
+        The Material provided under the Dash MCL ND 1.0 License may be integrated into modpacks and server environments under specific conditions:
+      </p>
+      <ul>
+        <li>
+          <strong>Modpack Inclusion:</strong> Unmodified modpacks may include the Material if the modpack’s download page clearly displays the Official Download Link. For modified modpacks, explicit written approval from Gamedash43 is required. Direct inclusion of the .jar file is permitted, though distribution via CurseForge is preferred.
+        </li>
+        <li>
+          <strong>Server Use:</strong> Private server use is allowed when the server is strictly invitation-only and does not provide permanent access to the Material. Ephemeral distribution for gameplay is permitted; for public or revenue-generating servers, prior written approval is required.
+        </li>
+      </ul>
+      <p>
+        This overview is provided as a summary. For full details, please review the complete license text or contact <a href="https://github.com/Gamedash43" target="_blank">Gamedash43</a>.
+      </p>
+    </div>
   </div>
   
   <footer>
@@ -458,49 +520,56 @@
     /* Toggle theme for a license text <pre> */
     function toggleLicenseTheme(preId) {
       const pre = document.getElementById(preId);
-      if (pre.classList.contains('dark-mode-text')) {
-        pre.classList.remove('dark-mode-text');
-        pre.classList.add('light-mode-text');
+      if (pre.classList.contains("dark-mode-text")) {
+        pre.classList.remove("dark-mode-text");
+        pre.classList.add("light-mode-text");
       } else {
-        pre.classList.remove('light-mode-text');
-        pre.classList.add('dark-mode-text');
+        pre.classList.remove("light-mode-text");
+        pre.classList.add("dark-mode-text");
       }
     }
 
     /* Load license texts via fetch */
     function loadLicenseTexts() {
-      fetch('dash_mcl_nd_1.0_agreement.txt')
+      fetch("dash_mcl_nd_1.0_agreement.txt")
         .then(response => response.text())
-        .then(data => { document.getElementById('ndLicenseText').textContent = data; });
-      fetch('dash_mcl_open_1.0_agreement.txt')
+        .then(data => { document.getElementById("ndLicenseText").textContent = data; });
+      fetch("dash_mcl_open_1.0_agreement.txt")
         .then(response => response.text())
-        .then(data => { document.getElementById('openLicenseText').textContent = data; });
-      fetch('dash_mcl_public_1.0_agreement.txt')
+        .then(data => { document.getElementById("openLicenseText").textContent = data; });
+      fetch("dash_mcl_public_1.0_agreement.txt")
         .then(response => response.text())
-        .then(data => { document.getElementById('publicLicenseText').textContent = data; });
+        .then(data => { document.getElementById("publicLicenseText").textContent = data; });
     }
 
-    /* Show the specified section and update URL hash */
+    /* Show the specified section and update URL hash.
+       For the usage page, the tabs are hidden. */
     function showSection(sectionId) {
-      const sections = document.getElementsByClassName('section');
-      const tabs = document.getElementsByClassName('tab');
+      const sections = document.getElementsByClassName("section");
       for (let i = 0; i < sections.length; i++) {
-        sections[i].classList.remove('active');
-        tabs[i].classList.remove('active');
+        sections[i].classList.remove("active");
       }
-      document.getElementById(sectionId).classList.add('active');
-      document.getElementById('tab-' + sectionId).classList.add('active');
-      window.history.replaceState(null, null, '#' + sectionId);
+      if (sectionId === "usage") {
+        document.querySelector(".tabs").style.display = "none";
+      } else {
+        document.querySelector(".tabs").style.display = "flex";
+        const tabs = document.getElementsByClassName("tab");
+        for (let i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove("active");
+        }
+        document.getElementById("tab-" + sectionId).classList.add("active");
+      }
+      document.getElementById(sectionId).classList.add("active");
+      window.history.replaceState(null, null, "#" + sectionId);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
-      // Make "requests" the default tab if no hash
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
       } else {
-        showSection('requests');
+        showSection("requests");
       }
     });
   </script>
