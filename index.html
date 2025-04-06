@@ -20,8 +20,7 @@
       font-family: "Roboto", sans-serif;
       margin: 0;
       padding: 0;
-      /* Extra bottom margin to show background above pinned footer */
-      margin-bottom: 120px;
+      margin-bottom: 120px; /* Extra bottom margin to show background above pinned footer */
     }
     
     /* HEADER */
@@ -107,6 +106,30 @@
     }
     .section.active {
       display: block;
+    }
+    
+    /* Increase text size on usage page */
+    #usage {
+      font-size: 1.2em;
+    }
+    
+    /* Translation buttons */
+    #translationButtons {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    #translationButtons button {
+      background: #2a2a2a;
+      border: 1px solid #444;
+      color: #e0e0e0;
+      padding: 5px 10px;
+      margin: 2px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    #translationButtons button:hover {
+      background: #444;
     }
     
     /* BOXES */
@@ -251,7 +274,6 @@
     }
     
     // Load license texts via fetch.
-    // Note: The ND license is still loaded from "dash_mcl_nd_1.0_agreement.txt".
     function loadLicenseTexts() {
       fetch("dash_mcl_nd_1.0_agreement.txt")
         .then(response => response.text())
@@ -264,20 +286,155 @@
         .then(data => { document.getElementById("publicLicenseText").textContent = data; });
     }
     
+    // Usage translations dictionary.
+    const usageTranslations = {
+      en: `<h2>How You Can Use the Material</h2>
+<p>You can use the Material (like mods, datapacks, or resource packs) on your modpacks and servers as long as you follow these simple rules:</p>
+<ul>
+  <li><strong>In Modpacks:</strong> If you use the Material exactly as it is, just make sure your modpack’s download page shows the official download link. If you change anything in the Material, you must get written permission from @gamedash43.</li>
+  <li><strong>On Servers:</strong>
+    <ul>
+      <li><em>Private Servers:</em> If you run a server that only your invited friends can join, you can use the Material.</li>
+      <li><em>Public Servers:</em> If your server is open to everyone or if you make money from it, you need to get written permission from @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>This is a quick summary of how you can use the Material. For all the details, please read the full license text or contact @gamedash43 on Discord.</p>`,
+
+      es: `<h2>Cómo puedes usar el Material</h2>
+<p>Puedes usar el Material (como mods, datapacks o paquetes de recursos) en tus modpacks y servidores, siempre que sigas estas reglas simples:</p>
+<ul>
+  <li><strong>En Modpacks:</strong> Si usas el Material tal como está, asegúrate de que la página de descarga de tu modpack muestre el enlace oficial. Si cambias algo en el Material, debes obtener permiso por escrito de @gamedash43.</li>
+  <li><strong>En Servidores:</strong>
+    <ul>
+      <li><em>Servidores Privados:</em> Si diriges un servidor solo para amigos invitados, puedes usar el Material.</li>
+      <li><em>Servidores Públicos:</em> Si tu servidor está abierto a todos o genera ingresos, necesitas permiso por escrito de @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>Este es un resumen rápido de cómo puedes usar el Material. Para todos los detalles, lee el texto completo de la licencia o contacta a @gamedash43 en Discord.</p>`,
+
+      fr: `<h2>Comment utiliser le Matériel</h2>
+<p>Vous pouvez utiliser le Matériel (comme des mods, datapacks ou packs de ressources) dans vos modpacks et serveurs tant que vous respectez ces règles simples :</p>
+<ul>
+  <li><strong>Dans les Modpacks :</strong> Si vous utilisez le Matériel tel quel, assurez-vous que la page de téléchargement de votre modpack affiche le lien officiel. Si vous modifiez quelque chose, vous devez obtenir l'autorisation écrite de @gamedash43.</li>
+  <li><strong>Sur les Serveurs :</strong>
+    <ul>
+      <li><em>Serveurs Privés :</em> Si vous gérez un serveur réservé à vos amis invités, vous pouvez utiliser le Matériel.</li>
+      <li><em>Serveurs Publics :</em> Si votre serveur est ouvert à tous ou génère des revenus, vous devez obtenir l'autorisation écrite de @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>Ceci est un résumé rapide de la façon d'utiliser le Matériel. Pour plus de détails, veuillez lire le texte complet de la licence ou contacter @gamedash43 sur Discord.</p>`,
+
+      de: `<h2>Wie du das Material verwenden kannst</h2>
+<p>Du kannst das Material (wie Mods, Datapacks oder Ressourcenpakete) in deinen Modpacks und Servern verwenden, solange du diese einfachen Regeln befolgst:</p>
+<ul>
+  <li><strong>In Modpacks:</strong> Wenn du das Material genau so benutzt, wie es ist, stelle sicher, dass die Download-Seite deines Modpacks den offiziellen Download-Link anzeigt. Wenn du etwas änderst, benötigst du eine schriftliche Genehmigung von @gamedash43.</li>
+  <li><strong>Auf Servern:</strong>
+    <ul>
+      <li><em>Private Server:</em> Wenn du einen Server betreibst, zu dem nur deine eingeladenen Freunde Zugang haben, kannst du das Material verwenden.</li>
+      <li><em>Öffentliche Server:</em> Wenn dein Server für alle zugänglich ist oder Geld einbringt, benötigst du eine schriftliche Genehmigung von @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>Dies ist eine kurze Zusammenfassung, wie du das Material verwenden kannst. Für alle Details lies bitte den vollständigen Lizenztext oder kontaktiere @gamedash43 auf Discord.</p>`,
+
+      zh: `<h2>如何使用该素材</h2>
+<p>你可以在你的模组包和服务器上使用该素材（如模组、数据包或资源包），只要你遵守以下简单规则：</p>
+<ul>
+  <li><strong>在模组包中：</strong>如果你按原样使用该素材，请确保你的模组包下载页面显示官方下载链接。如果你对素材进行了修改，必须获得 @gamedash43 的书面许可。</li>
+  <li><strong>在服务器上：</strong>
+    <ul>
+      <li><em>私人服务器：</em>如果你的服务器只允许受邀的朋友加入，你可以使用该素材。</li>
+      <li><em>公共服务器：</em>如果你的服务器对所有人开放或有盈利，你需要获得 @gamedash43 的书面许可。</li>
+    </ul>
+  </li>
+</ul>
+<p>这只是一个简要说明。有关所有详细信息，请阅读完整的许可文本或通过 Discord 联系 @gamedash43。</p>`,
+
+      ar: `<h2>كيفية استخدام المادة</h2>
+<p>يمكنك استخدام المادة (مثل التعديلات، حزم البيانات، أو حزم الموارد) في حزمك وخوادمك طالما تتبع هذه القواعد البسيطة:</p>
+<ul>
+  <li><strong>في حزم التعديلات:</strong> إذا استخدمت المادة كما هي، فتأكد من أن صفحة تنزيل الحزمة تعرض الرابط الرسمي للتنزيل. إذا قمت بتعديل أي شيء، يجب أن تحصل على إذن خطي من @gamedash43.</li>
+  <li><strong>على الخوادم:</strong>
+    <ul>
+      <li><em>الخوادم الخاصة:</em> إذا كنت تدير خادمًا يسمح بدخول الأصدقاء المدعوين فقط، يمكنك استخدام المادة.</li>
+      <li><em>الخوادم العامة:</em> إذا كان خادمك مفتوحًا للجميع أو يحقق أرباحًا، تحتاج إلى إذن خطي من @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>هذا ملخص سريع لكيفية استخدام المادة. للحصول على كل التفاصيل، يرجى قراءة نص الترخيص الكامل أو الاتصال بـ @gamedash43 على Discord.</p>`,
+
+      ru: `<h2>Как использовать материал</h2>
+<p>Вы можете использовать материал (например, моды, датапаки или ресурс-паки) в своих модпаках и серверах, если будете следовать этим простым правилам:</p>
+<ul>
+  <li><strong>В модпаках:</strong> Если вы используете материал без изменений, убедитесь, что на странице загрузки модпака указан официальный ссылочный. Если вы что-либо изменяете, вам нужно письменное разрешение от @gamedash43.</li>
+  <li><strong>На серверах:</strong>
+    <ul>
+      <li><em>Частные серверы:</em> Если вы управляете сервером, доступ к которому имеют только приглашённые друзья, вы можете использовать материал.</li>
+      <li><em>Публичные серверы:</em> Если ваш сервер открыт для всех или приносит доход, вам необходимо письменное разрешение от @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>Это краткое резюме. Для подробностей прочитайте полный текст лицензии или свяжитесь с @gamedash43 через Discord.</p>`,
+
+      pt: `<h2>Como você pode usar o Material</h2>
+<p>Você pode usar o Material (como mods, datapacks ou pacotes de recursos) em seus modpacks e servidores, desde que siga estas regras simples:</p>
+<ul>
+  <li><strong>Em Modpacks:</strong> Se você usar o Material exatamente como está, certifique-se de que a página de download do seu modpack mostra o link oficial. Se modificar algo, você deve obter permissão por escrito de @gamedash43.</li>
+  <li><strong>Em Servidores:</strong>
+    <ul>
+      <li><em>Servidores Privados:</em> Se você administra um servidor apenas para amigos convidados, pode usar o Material.</li>
+      <li><em>Servidores Públicos:</em> Se o seu servidor é aberto para todos ou gera receita, você precisa de permissão por escrito de @gamedash43.</li>
+    </ul>
+  </li>
+</ul>
+<p>Este é um resumo rápido. Para todos os detalhes, leia o texto completo da licença ou entre em contato com @gamedash43 no Discord.</p>`,
+
+      ja: `<h2>素材の使い方</h2>
+<p>あなたは、モッズ、データパック、またはリソースパックなどの素材を、モッドパックやサーバーで使用できます。以下の簡単なルールに従ってください：</p>
+<ul>
+  <li><strong>モッドパック内で：</strong> 素材をそのまま使用する場合は、モッドパックのダウンロードページに公式ダウンロードリンクが表示されていることを確認してください。変更を加える場合は、@gamedash43から書面で許可を得る必要があります。</li>
+  <li><strong>サーバー上で：</strong>
+    <ul>
+      <li><em>プライベートサーバー：</em> 招待された友達だけが参加できるサーバーなら、素材を使用できます。</li>
+      <li><em>パブリックサーバー：</em> サーバーが誰でも参加可能、または収益がある場合は、@gamedash43から書面での許可が必要です。</li>
+    </ul>
+  </li>
+</ul>
+<p>これは簡単な概要です。詳しくは、完全なライセンステキストを読んで、Discordで@gamedash43に連絡してください。</p>`,
+
+      hi: `<h2>आप सामग्री का उपयोग कैसे कर सकते हैं</h2>
+<p>आप अपने मोडपैक्स और सर्वरों में सामग्री (जैसे कि मोड, डेटा पैक्स, या रिसोर्स पैक्स) का उपयोग कर सकते हैं, बशर्ते कि आप इन सरल नियमों का पालन करें:</p>
+<ul>
+  <li><strong>मोडपैक्स में:</strong> यदि आप सामग्री को जैसे का तैसा उपयोग करते हैं, तो सुनिश्चित करें कि आपके मोडपैक के डाउनलोड पृष्ठ पर आधिकारिक डाउनलोड लिंक दिखाई दे। यदि आप सामग्री में कोई बदलाव करते हैं, तो आपको @gamedash43 से लिखित अनुमति लेनी होगी।</li>
+  <li><strong>सर्वरों पर:</strong>
+    <ul>
+      <li><em>प्राइवेट सर्वर:</em> यदि आप एक ऐसा सर्वर चलाते हैं जिसमें केवल आपके निमंत्रित दोस्त शामिल हो सकते हैं, तो आप सामग्री का उपयोग कर सकते हैं।</li>
+      <li><em>पब्लिक सर्वर:</em> यदि आपका सर्वर सभी के लिए खुला है या उससे आपको पैसा मिलता है, तो आपको @gamedash43 से लिखित अनुमति लेनी होगी।</li>
+    </ul>
+  </li>
+</ul>
+<p>यह एक संक्षिप्त सारांश है। सभी विवरणों के लिए, कृपया पूरा लाइसेंस टेक्स्ट पढ़ें या Discord पर @gamedash43 से संपर्क करें।</p>`
+    };
+
+    // Function to set the language for the usage page.
+    function setLanguage(lang) {
+      document.getElementById("usageContent").innerHTML = usageTranslations[lang];
+    }
+    
     // Show the specified section and update URL hash.
     // For the "usage" page, the tab navigation is hidden.
     function showSection(sectionId) {
       const sections = document.getElementsByClassName("section");
-      // Remove active class from all sections
       for (let i = 0; i < sections.length; i++) {
         sections[i].classList.remove("active");
       }
       
       if (sectionId === "usage") {
-        // Hide the tabs navigation for the usage page
         document.querySelector(".tabs").style.display = "none";
       } else {
-        // Show tabs navigation for non-usage pages
         document.querySelector(".tabs").style.display = "flex";
         const tabs = document.getElementsByClassName("tab");
         for (let i = 0; i < tabs.length; i++) {
@@ -292,12 +449,15 @@
     
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
-      // Default to "requests" if no hash is provided.
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
       } else {
         showSection("requests");
+      }
+      // If the usage section is shown, default to English.
+      if (window.location.hash.substring(1) === "usage") {
+        setLanguage("en");
       }
     });
   </script>
@@ -366,7 +526,7 @@
           <li>No modifications or public distribution of the original Material without explicit permission.</li>
           <li>Private server use is permitted under strict conditions; commercial use is disallowed.</li>
           <li>
-            <strong>Modpack Inclusion:</strong> Unmodified modpacks may include the Material provided the modpack’s download page features a clear, accessible Official Download Link. For modified modpacks, explicit written approval from Gamedash43 is required. The .jar file may be added directly, though distribution via CurseForge is preferred.
+            <strong>Modpack Inclusion:</strong> Unmodified modpacks may include the Material provided the modpack’s download page features a clear, accessible Official Download Link. For modified modpacks, explicit written approval from @gamedash43 is required. The .jar file may be added directly, though distribution via CurseForge is preferred.
           </li>
           <li>Clear attribution is required for any public display of the Material.</li>
         </ul>
@@ -494,29 +654,33 @@
     
     <!-- Usage Section (separate page: no tab navigation) -->
     <div id="usage" class="section">
-      <h2>How You Can Use the Material</h2>
-      <p>
-        You can use the Material (like mods, datapacks, or resource packs) on your modpacks and servers as long as you follow these simple rules:
-      </p>
-      <ul>
-        <li>
-          <strong>In Modpacks:</strong> If you use the Material exactly as it is, just make sure your modpack’s download page shows the official download link. If you change anything in the Material, you must get written permission from @gamedash43.
-        </li>
-        <li>
-          <strong>On Servers:</strong>
-          <ul>
-            <li>
-              <em>Private Servers:</em> If you run a server that only your invited friends can join, you can use the Material.
-            </li>
-            <li>
-              <em>Public Servers:</em> If your server is open to everyone or if you make money from it, you need to get written permission from @gamedash43.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <p>
-        This is a quick summary of how you can use the Material. For all the details, please read the full license text or contact @gamedash43 on Discord.
-      </p>
+      <div id="translationButtons">
+        <button onclick="setLanguage('en')">🇺🇸 English</button>
+        <button onclick="setLanguage('es')">🇪🇸 Español</button>
+        <button onclick="setLanguage('fr')">🇫🇷 Français</button>
+        <button onclick="setLanguage('de')">🇩🇪 Deutsch</button>
+        <button onclick="setLanguage('zh')">🇨🇳 中文</button>
+        <button onclick="setLanguage('ar')">🇸🇦 العربية</button>
+        <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
+        <button onclick="setLanguage('pt')">🇵🇹 Português</button>
+        <button onclick="setLanguage('ja')">🇯🇵 日本語</button>
+        <button onclick="setLanguage('hi')">🇮🇳 हिन्दी</button>
+      </div>
+      <div id="usageContent">
+        <!-- Default English content -->
+        <h2>How You Can Use the Material</h2>
+        <p>You can use the Material (like mods, datapacks, or resource packs) on your modpacks and servers as long as you follow these simple rules:</p>
+        <ul>
+          <li><strong>In Modpacks:</strong> If you use the Material exactly as it is, just make sure your modpack’s download page shows the official download link. If you change anything in the Material, you must get written permission from @gamedash43.</li>
+          <li><strong>On Servers:</strong>
+            <ul>
+              <li><em>Private Servers:</em> If you run a server that only your invited friends can join, you can use the Material.</li>
+              <li><em>Public Servers:</em> If your server is open to everyone or if you make money from it, you need to get written permission from @gamedash43.</li>
+            </ul>
+          </li>
+        </ul>
+        <p>This is a quick summary of how you can use the Material. For all the details, please read the full license text or contact @gamedash43 on Discord.</p>
+      </div>
     </div>
   </div>
   
@@ -536,7 +700,7 @@
         pre.classList.add("dark-mode-text");
       }
     }
-
+    
     /* Load license texts via fetch */
     function loadLicenseTexts() {
       fetch("dash_mcl_nd_1.0_agreement.txt")
@@ -549,9 +713,9 @@
         .then(response => response.text())
         .then(data => { document.getElementById("publicLicenseText").textContent = data; });
     }
-
-    /* Show the specified section and update URL hash.
-       For the usage page, the tabs are hidden. */
+    
+    // Show the specified section and update URL hash.
+    // For the usage page, the tabs are hidden.
     function showSection(sectionId) {
       const sections = document.getElementsByClassName("section");
       for (let i = 0; i < sections.length; i++) {
@@ -570,7 +734,7 @@
       document.getElementById(sectionId).classList.add("active");
       window.history.replaceState(null, null, "#" + sectionId);
     }
-
+    
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
       const hash = window.location.hash.substring(1);
@@ -578,6 +742,9 @@
         showSection(hash);
       } else {
         showSection("requests");
+      }
+      if (window.location.hash.substring(1) === "usage") {
+        setLanguage("en");
       }
     });
   </script>
