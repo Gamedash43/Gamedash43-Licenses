@@ -141,5 +141,5 @@ This License Agreement ("Agreement") is a legal contract between Gamedash43 ("Th
 9.3 No attorney-client relationship is created by this Agreement.
 
 ---------------------------------------------------------
-End of Dash MCL Open 1.1
+End of Dash MCL Open 1.0
 ---------------------------------------------------------
