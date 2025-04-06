@@ -27,8 +27,8 @@
     header h1 {
       font-size: 2em;
       margin: 0;
+      color: #805b87; /* Title text color */
     }
-    /* Tabs styling */
     .tabs {
       display: flex;
       justify-content: center;
@@ -45,7 +45,6 @@
     .tab:hover, .tab.active {
       background-color: #333;
     }
-    /* Container for content */
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -68,15 +67,16 @@
       font-size: 1.2em;
       font-weight: bold;
       margin-bottom: 10px;
-      color: #ffab40;
+      color: #805b87;
     }
     .license-text {
       background-color: #121212;
       border: 1px solid #333;
       padding: 10px;
       overflow: auto;
-      height: 300px;
+      max-height: 300px;
       border-radius: 5px;
+      white-space: pre-wrap;
     }
     ul.materials {
       list-style-type: disc;
@@ -104,14 +104,14 @@
       document.getElementById("tab-" + sectionId).classList.add("active");
     }
     window.addEventListener("DOMContentLoaded", function() {
-      // Show the first section by default.
+      // Show the first section (No Derivatives) by default.
       showSection("nd");
     });
   </script>
 </head>
 <body>
   <header>
-    <!-- Replace "logo.png" with your actual logo filename -->
+    <!-- Replace "logo.png" with your actual logo file -->
     <img src="logo.png" alt="Logo">
     <h1>Dash MCL Licenses Repository</h1>
   </header>
@@ -128,14 +128,19 @@
       <h2>Dash MCL ND 1.0 License</h2>
       <!-- Summary Box -->
       <div class="box">
-        <div class="box-title">Summary (Not Legally Binding)</div>
-        <p>This summary is provided for quick reference only. Please read the full license text below carefully to ensure it meets your use case. This variant prohibits modifications or public distribution of the original Material without explicit approval.</p>
+        <div class="box-title">Summary</div>
+        <p>
+          Dash MCL ND 1.0 is designed for situations where the original Material must remain unchanged. Use this license when no modifications or public distributions of the original content are allowed without explicit approval.
+        </p>
+        <p style="font-size:0.9em; color:#aaa;">
+          Note: This summary is provided for informational purposes only and is not legally binding. Please review the full license text below.
+        </p>
       </div>
       <!-- Full License Text Box -->
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
-          <iframe src="dash_mcl_nd_1.0_agreement.txt" frameborder="0" style="width:100%; height:100%;"></iframe>
+          <iframe src="dash_mcl_nd_1.0_agreement.txt" frameborder="0" style="width:100%; height:300px;"></iframe>
         </div>
       </div>
       <!-- Licensed Materials Box -->
@@ -151,17 +156,22 @@
     
     <!-- Open Variant Section -->
     <div id="open" class="section">
-      <h2>Dash MCL Open 1.1 License</h2>
+      <h2>Dash MCL Open 1.0 License</h2>
       <!-- Summary Box -->
       <div class="box">
-        <div class="box-title">Summary (Not Legally Binding)</div>
-        <p>This summary is provided for quick reference only. Please read the full license text below carefully. This variant permits the creation and distribution of Modified Works under conditions that prevent substantial verbatim copying of the original Material and require proper attribution.</p>
+        <div class="box-title">Summary</div>
+        <p>
+          Dash MCL Open 1.0 permits the creation and distribution of Modified Works. It is ideal for scenarios where you wish to allow adaptations and derivative works provided the Modified Work is inspired by the original rather than copying it verbatim. Proper attribution must be included.
+        </p>
+        <p style="font-size:0.9em; color:#aaa;">
+          Note: This summary is provided for informational purposes only and is not legally binding. Please review the full license text below.
+        </p>
       </div>
       <!-- Full License Text Box -->
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
-          <iframe src="dash_mcl_open_1.0_agreement.txt" frameborder="0" style="width:100%; height:100%;"></iframe>
+          <iframe src="dash_mcl_open_1.0_agreement.txt" frameborder="0" style="width:100%; height:300px;"></iframe>
         </div>
       </div>
       <!-- Licensed Materials Box -->
@@ -180,14 +190,19 @@
       <h2>Dash MCL Public 1.0 License</h2>
       <!-- Summary Box -->
       <div class="box">
-        <div class="box-title">Summary (Not Legally Binding)</div>
-        <p>This summary is provided for quick reference only. Please review the full license text below. This variant grants broad rights for reproduction, modification, and distribution—including commercial use—provided that proper attribution is given.</p>
+        <div class="box-title">Summary</div>
+        <p>
+          Dash MCL Public 1.0 grants broad rights for reproduction, modification, and distribution—including commercial use—provided that proper attribution is given. Use this license when open sharing of the Material is desired.
+        </p>
+        <p style="font-size:0.9em; color:#aaa;">
+          Note: This summary is provided for informational purposes only and is not legally binding. Please review the full license text below.
+        </p>
       </div>
       <!-- Full License Text Box -->
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
-          <iframe src="dash_mcl_public_1.0_agreement.txt" frameborder="0" style="width:100%; height:100%;"></iframe>
+          <iframe src="dash_mcl_public_1.0_agreement.txt" frameborder="0" style="width:100%; height:300px;"></iframe>
         </div>
       </div>
       <!-- Licensed Materials Box -->
