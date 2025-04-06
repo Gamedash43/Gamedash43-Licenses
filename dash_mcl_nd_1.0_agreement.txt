@@ -1,4 +1,4 @@
-Dash MCL (Dash Minecraft Content License – No Derivatives Variant)
+Dash MCL ND 1.0 (Dash Minecraft Content License – No Derivatives Variant)
 -------------------------------------------
 This License Agreement ("Agreement") is a legal contract between Gamedash43 ("The Creator" or "Licensor") and the user ("Licensee") of the licensed material ("Material"), which includes Minecraft datapacks, mods, and resource packs. By using, installing, modifying, or otherwise interacting with the Material, the Licensee agrees to be bound by all the terms and conditions of this Agreement, unless specific exceptions are granted in writing by The Creator. This Agreement does not create an attorney-client relationship.
 
@@ -119,5 +119,5 @@ This License Agreement ("Agreement") is a legal contract between Gamedash43 ("Th
 9.3 No attorney-client relationship is created by this Agreement.
 
 ---------------------------------------------------------
-End of Dash MCL
+End of Dash MCL ND 1.0
 ---------------------------------------------------------
