@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="logo.png">
   <!-- Import Google Font: Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     /* Dark mode styling */
     body {
@@ -17,6 +18,7 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       display: flex;
       align-items: center;
@@ -33,47 +35,51 @@
       margin: 0;
       color: #805b87; /* Title text color */
     }
+
     .tabs {
       display: flex;
       justify-content: center;
       background-color: #1f1f1f;
       border-bottom: 1px solid #333;
+      padding: 0 10px;
     }
     .tab {
       display: flex;
       align-items: center;
       gap: 8px;
       padding: 15px 30px;
+      margin: 10px 5px;
       cursor: pointer;
       color: #e0e0e0;
       text-decoration: none;
       font-weight: bold;
       transition: background-color 0.3s ease;
+      background-color: #2a2a2a;
+      border-radius: 8px;
     }
     .tab:hover, .tab.active {
       background-color: #333;
     }
-    .tab img {
-      height: 20px;
-      width: 20px;
-    }
+
     .container {
       max-width: 900px;
       margin: 20px auto;
       padding: 20px;
     }
+
     .section {
       display: none;
     }
     .section.active {
       display: block;
     }
+
     .box {
       border: 1px solid #333;
       background-color: #1f1f1f;
       padding: 15px;
       margin-bottom: 20px;
-      border-radius: 5px;
+      border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     .box-title {
@@ -82,19 +88,25 @@
       margin-bottom: 10px;
       color: #805b87;
     }
+
     .license-text {
       background-color: #121212;
       border: 1px solid #333;
       padding: 10px;
-      overflow: auto;
-      max-height: 400px;
-      border-radius: 5px;
-      white-space: pre-wrap;
+      border-radius: 10px;
     }
+    .license-text iframe {
+      width: 100%;
+      height: 400px;
+      border: none;    /* Removes the iframe border */
+      overflow: auto;  /* Let the iframe itself scroll if needed */
+    }
+
     ul.materials {
       list-style-type: disc;
       margin-left: 20px;
     }
+
     footer {
       text-align: center;
       padding: 10px;
@@ -104,6 +116,7 @@
       color: #aaa;
     }
   </style>
+
   <script>
     // Simple tab functionality
     function showSection(sectionId) {
@@ -130,15 +143,9 @@
   </header>
   
   <div class="tabs">
-    <div id="tab-nd" class="tab" onclick="showSection('nd')">
-      <img src="logo.png" alt="Logo Icon">No Derivatives Variant
-    </div>
-    <div id="tab-open" class="tab" onclick="showSection('open')">
-      <img src="logo.png" alt="Logo Icon">Open Variant
-    </div>
-    <div id="tab-public" class="tab" onclick="showSection('public')">
-      <img src="logo.png" alt="Logo Icon">Public Variant
-    </div>
+    <div id="tab-nd" class="tab" onclick="showSection('nd')">🔒 No Derivatives Variant</div>
+    <div id="tab-open" class="tab" onclick="showSection('open')">🔓 Open Variant</div>
+    <div id="tab-public" class="tab" onclick="showSection('public')">🌐 Public Variant</div>
   </div>
   
   <div class="container">
@@ -149,7 +156,12 @@
       <div class="box">
         <div class="box-title">Summary</div>
         <p>
-          Dash MCL ND 1.0 is designed for scenarios where the original Material must remain unchanged. Use this license when no modifications or public distributions of the original content are permitted without explicit approval.
+          <strong>Key Terms:</strong>
+          <ul>
+            <li>No modifications or public distribution of the original Material are allowed without explicit permission.</li>
+            <li>Private server use is permitted under specified conditions, but commercial use is disallowed.</li>
+            <li>Attribution is required for any public display or reference.</li>
+          </ul>
         </p>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
@@ -159,7 +171,7 @@
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
-          <iframe src="dash_mcl_nd_1.0_agreement.txt" frameborder="0" style="width:100%; height:400px;"></iframe>
+          <iframe src="dash_mcl_nd_1.0_agreement.txt"></iframe>
         </div>
       </div>
       <!-- Licensed Materials Box -->
@@ -180,7 +192,12 @@
       <div class="box">
         <div class="box-title">Summary</div>
         <p>
-          Dash MCL Open 1.0 permits the creation and distribution of Modified Works. It is suitable for cases where adaptations or derivative works are desired—provided that they are based on the original only as inspiration and do not contain substantial verbatim copying. Proper attribution must be provided.
+          <strong>Key Terms:</strong>
+          <ul>
+            <li>Modified Works may be created and distributed if they do not include substantial verbatim copies of the original Material.</li>
+            <li>Proper attribution and an Official Download Link must be provided for any public distribution.</li>
+            <li>Commercial use remains restricted unless specifically approved under the license terms.</li>
+          </ul>
         </p>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
@@ -190,7 +207,7 @@
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
-          <iframe src="dash_mcl_open_1.0_agreement.txt" frameborder="0" style="width:100%; height:400px;"></iframe>
+          <iframe src="dash_mcl_open_1.0_agreement.txt"></iframe>
         </div>
       </div>
       <!-- Licensed Materials Box -->
@@ -211,7 +228,12 @@
       <div class="box">
         <div class="box-title">Summary</div>
         <p>
-          Dash MCL Public 1.0 grants broad rights for reproduction, modification, and distribution—including commercial use—provided that proper attribution is given. Use this variant when open sharing of the Material is desired.
+          <strong>Key Terms:</strong>
+          <ul>
+            <li>Broad rights for reproduction, modification, and distribution, including commercial use.</li>
+            <li>Requires clear attribution to the original creator wherever the Material is used publicly.</li>
+            <li>No restrictions on server use, modpack inclusion, or derivative creations, beyond providing proper credit.</li>
+          </ul>
         </p>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
@@ -221,7 +243,7 @@
       <div class="box">
         <div class="box-title">Full License Text</div>
         <div class="license-text">
-          <iframe src="dash_mcl_public_1.0_agreement.txt" frameborder="0" style="width:100%; height:400px;"></iframe>
+          <iframe src="dash_mcl_public_1.0_agreement.txt"></iframe>
         </div>
       </div>
       <!-- Licensed Materials Box -->
