@@ -9,24 +9,20 @@
   <link rel="icon" type="image/png" href="logo.png" />
   
   <!-- Google Font: Roboto -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   
   <style>
-    /* Dark background with overlay */
+    /* Remove black tint: use the background image directly */
     body {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url("background.jpg") no-repeat center center fixed;
+      background: url("background.jpg") no-repeat center center fixed;
       background-size: cover;
       color: #e0e0e0;
       font-family: "Roboto", sans-serif;
       margin: 0;
       padding: 0;
     }
-
-    /* Header */
+    
+    /* HEADER */
     header {
       display: flex;
       align-items: center;
@@ -43,14 +39,14 @@
       margin: 0;
     }
     header h1 a {
-      color: #805b87;
+      color: #805b87; /* Title text color */
       text-decoration: none;
     }
     header h1 a:hover {
       text-decoration: underline;
     }
-
-    /* Tabs */
+    
+    /* TABS */
     .tabs {
       display: flex;
       justify-content: center;
@@ -76,15 +72,8 @@
     .tab.active {
       background-color: #333;
     }
-    .tab-icon {
-      width: 24px;
-      height: 24px;
-      filter: brightness(0) saturate(100%) invert(45%) sepia(20%) hue-rotate(240deg)
-        brightness(85%) contrast(85%);
-      /* The filter above gives a muted purple effect; adjust as needed or remove. */
-    }
-
-    /* Main Container */
+    
+    /* MAIN CONTAINER */
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -98,15 +87,15 @@
     .section.active {
       display: block;
     }
-
-    /* Boxes */
+    
+    /* BOXES */
     .box {
       border: 1px solid #333;
       background-color: #1f1f1f;
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       position: relative;
     }
     .box-title {
@@ -118,8 +107,8 @@
       align-items: center;
       justify-content: space-between;
     }
-
-    /* License text + theme toggle */
+    
+    /* License Text + Theme Toggle */
     .license-text {
       background-color: #121212;
       border: 1px solid #333;
@@ -146,8 +135,8 @@
       background-color: #fefefe;
       color: #000;
     }
-
-    /* Toggle Button */
+    
+    /* Toggle Button Styling - placed next to the Full License Text title */
     .toggle-btn {
       background-color: #2a2a2a;
       color: #e0e0e0;
@@ -163,7 +152,7 @@
     .toggle-btn:hover {
       background-color: #444;
     }
-
+    
     /* Official Download Links Box */
     .link-box {
       border: 1px solid #333;
@@ -171,7 +160,7 @@
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     .link-buttons {
       display: flex;
@@ -194,18 +183,15 @@
     .download-btn:hover {
       background-color: #444;
     }
-    .download-btn img {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Materials list */
+    /* Removed icons from download buttons as requested */
+    
+    /* MATERIALS LIST */
     ul.materials {
       list-style-type: disc;
       margin-left: 20px;
     }
-
-    /* Footer */
+    
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 10px;
@@ -215,7 +201,7 @@
       color: #aaa;
     }
   </style>
-
+  
   <script>
     // Toggle theme for a license text <pre>
     function toggleLicenseTheme(preId) {
@@ -228,26 +214,20 @@
         pre.classList.add("dark-mode-text");
       }
     }
-
+    
     // Load license texts via fetch
     function loadLicenseTexts() {
       fetch("dash_mcl_nd_1.0_agreement.txt")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("ndLicenseText").textContent = data;
-        });
+        .then(response => response.text())
+        .then(data => { document.getElementById("ndLicenseText").textContent = data; });
       fetch("dash_mcl_open_1.0_agreement.txt")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("openLicenseText").textContent = data;
-        });
+        .then(response => response.text())
+        .then(data => { document.getElementById("openLicenseText").textContent = data; });
       fetch("dash_mcl_public_1.0_agreement.txt")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("publicLicenseText").textContent = data;
-        });
+        .then(response => response.text())
+        .then(data => { document.getElementById("publicLicenseText").textContent = data; });
     }
-
+    
     // Show the specified section and update URL hash
     function showSection(sectionId) {
       const sections = document.getElementsByClassName("section");
@@ -260,9 +240,8 @@
       document.getElementById("tab-" + sectionId).classList.add("active");
       window.history.replaceState(null, null, "#" + sectionId);
     }
-
+    
     document.addEventListener("DOMContentLoaded", () => {
-      // Load the license text files
       loadLicenseTexts();
       // Show the correct tab if there's a hash, otherwise default to "nd"
       const hash = window.location.hash.substring(1);
@@ -276,31 +255,29 @@
 </head>
 <body>
   <header>
-    <!-- Your Logo -->
     <img src="logo.png" alt="Logo" />
     <h1>
-      <a href="https://github.com/Gamedash43/dash-mcl-licenses" target="_blank"
-        >Dash MCL Licenses Repository</a
-      >
+      <a href="https://github.com/Gamedash43/dash-mcl-licenses" target="_blank">
+        Dash MCL Licenses Repository
+      </a>
     </h1>
   </header>
-
-  <!-- Tabs with PNG icons -->
+  
   <div class="tabs">
     <div id="tab-nd" class="tab" onclick="showSection('nd')">
-      <img src="lock.png" alt="Lock Icon" class="tab-icon" />
       No Derivatives Variant
     </div>
     <div id="tab-open" class="tab" onclick="showSection('open')">
-      <img src="unlock.png" alt="Unlock Icon" class="tab-icon" />
       Open Variant
     </div>
     <div id="tab-public" class="tab" onclick="showSection('public')">
-      <img src="globe.png" alt="Globe Icon" class="tab-icon" />
       Public Variant
     </div>
+    <div id="tab-requests" class="tab" onclick="showSection('requests')">
+      Requests
+    </div>
   </div>
-
+  
   <div class="container">
     <!-- No Derivatives Section -->
     <div id="nd" class="section">
@@ -311,8 +288,8 @@
         <ul>
           <li>No modifications or public distribution of the original Material without explicit permission.</li>
           <li>Private server use is permitted under strict conditions; commercial use is disallowed.</li>
+          <li>For modpack inclusion: if unmodified, a link to an Official Download Page is sufficient; if modified, written approval is required. Inclusion of the .jar directly is allowed, though distribution via CurseForge is preferred.</li>
           <li>Clear attribution is required for any public display of the Material.</li>
-          <li>Modified version of CC BY-NC-ND.</li>
         </ul>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
@@ -333,10 +310,10 @@
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
           <a class="download-btn" href="https://modrinth.com/user/Gamedash43" target="_blank">
-            <img src="modrinth.png" alt="Modrinth" /> Modrinth
+            Modrinth
           </a>
           <a class="download-btn" href="https://www.planetminecraft.com/member/gamedash43/" target="_blank">
-            <img src="planetminecraft.png" alt="Planet Minecraft" /> Planet Minecraft
+            Planet Minecraft
           </a>
         </div>
       </div>
@@ -353,7 +330,7 @@
         </ul>
       </div>
     </div>
-
+    
     <!-- Open Variant Section -->
     <div id="open" class="section">
       <h2>Dash MCL Open 1.0 License</h2>
@@ -364,7 +341,6 @@
           <li>Allows creation and distribution of Modified Works based on the Material.</li>
           <li>Modified Works must not include substantial verbatim copies of the original.</li>
           <li>Proper attribution, including an Official Download Link, is required for public distribution.</li>
-          <li>Modified version of CC BY-SA.</li>
         </ul>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
@@ -385,10 +361,10 @@
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
           <a class="download-btn" href="https://modrinth.com/user/Gamedash43" target="_blank">
-            <img src="modrinth.png" alt="Modrinth" /> Modrinth
+            Modrinth
           </a>
           <a class="download-btn" href="https://www.planetminecraft.com/member/gamedash43/" target="_blank">
-            <img src="planetminecraft.png" alt="Planet Minecraft" /> Planet Minecraft
+            Planet Minecraft
           </a>
         </div>
       </div>
@@ -401,7 +377,7 @@
         </ul>
       </div>
     </div>
-
+    
     <!-- Public Variant Section -->
     <div id="public" class="section">
       <h2>Dash MCL Public 1.0 License</h2>
@@ -412,7 +388,6 @@
           <li>Grants broad rights for reproduction, modification, and distribution—including commercial use.</li>
           <li>Requires clear attribution for all public uses of the Material.</li>
           <li>Permits open sharing and adaptation without restrictions on server use or derivative works.</li>
-          <li>Modified version of CC BY.</li>
         </ul>
         <p style="font-size:0.9em; color:#aaa;">
           Note: This summary is for informational purposes only and is not legally binding. Please review the full license text below.
@@ -433,10 +408,10 @@
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
           <a class="download-btn" href="https://modrinth.com/user/Gamedash43" target="_blank">
-            <img src="modrinth.png" alt="Modrinth" /> Modrinth
+            Modrinth
           </a>
           <a class="download-btn" href="https://www.planetminecraft.com/member/gamedash43/" target="_blank">
-            <img src="planetminecraft.png" alt="Planet Minecraft" /> Planet Minecraft
+            Planet Minecraft
           </a>
         </div>
       </div>
@@ -448,6 +423,25 @@
         </ul>
       </div>
     </div>
+    
+    <!-- Requests Section -->
+    <div id="requests" class="section">
+      <h2>Requests</h2>
+      <div class="box">
+        <div class="box-title">Submit a Request</div>
+        <p>
+          For formal requests regarding license exceptions or approval from Gamedash43, please submit an issue on our GitHub repository. Include your project details and the reason for the exception or approval request.
+        </p>
+        <p>
+          You can submit your request by clicking the button below:
+        </p>
+        <div class="link-buttons">
+          <a class="download-btn" href="https://github.com/Gamedash43/dash-mcl-licenses/issues/new" target="_blank">
+            Submit Request
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -455,7 +449,7 @@
   </footer>
 
   <script>
-    /* Toggle theme for a license text <pre> */
+    // Toggle theme for a license text <pre>
     function toggleLicenseTheme(preId) {
       const pre = document.getElementById(preId);
       if (pre.classList.contains('dark-mode-text')) {
@@ -467,7 +461,7 @@
       }
     }
 
-    /* Load license texts via fetch */
+    // Load license texts via fetch
     function loadLicenseTexts() {
       fetch('dash_mcl_nd_1.0_agreement.txt')
         .then(response => response.text())
@@ -480,7 +474,7 @@
         .then(data => { document.getElementById('publicLicenseText').textContent = data; });
     }
 
-    /* Show the specified section and update URL hash */
+    // Show the specified section and update URL hash
     function showSection(sectionId) {
       const sections = document.getElementsByClassName('section');
       const tabs = document.getElementsByClassName('tab');
