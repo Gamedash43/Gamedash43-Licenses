@@ -5,45 +5,205 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dash MCL Licenses Repository</title>
   <style>
+    /* Dark mode styling */
     body {
+      background-color: #121212;
+      color: #e0e0e0;
       font-family: Arial, sans-serif;
-      margin: 2em;
-      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #1f1f1f;
+      border-bottom: 1px solid #333;
+    }
+    header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+    }
+    /* Tabs styling */
     .tabs {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      background-color: #1f1f1f;
+      border-bottom: 1px solid #333;
     }
     .tab {
-      margin: 0 10px;
-      padding: 10px 20px;
-      background-color: #e0e0e0;
-      border-radius: 5px;
+      padding: 15px 30px;
+      cursor: pointer;
+      color: #e0e0e0;
       text-decoration: none;
-      color: #333;
+      font-weight: bold;
     }
-    .tab:hover {
-      background-color: #d0d0d0;
+    .tab:hover, .tab.active {
+      background-color: #333;
     }
+    /* Container for content */
     .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #fff;
+      max-width: 900px;
+      margin: 20px auto;
       padding: 20px;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .box {
+      border: 1px solid #333;
+      background-color: #1f1f1f;
+      padding: 15px;
+      margin-bottom: 20px;
       border-radius: 5px;
+    }
+    .box-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffab40;
+    }
+    .license-text {
+      background-color: #121212;
+      border: 1px solid #333;
+      padding: 10px;
+      overflow: auto;
+      height: 300px;
+      border-radius: 5px;
+    }
+    ul.materials {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      background-color: #1f1f1f;
+      border-top: 1px solid #333;
+      color: #aaa;
     }
   </style>
+  <script>
+    // Simple tab functionality
+    function showSection(sectionId) {
+      var sections = document.getElementsByClassName("section");
+      var tabs = document.getElementsByClassName("tab");
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.remove("active");
+        tabs[i].classList.remove("active");
+      }
+      document.getElementById(sectionId).classList.add("active");
+      document.getElementById("tab-" + sectionId).classList.add("active");
+    }
+    window.addEventListener("DOMContentLoaded", function() {
+      // Show the first section by default.
+      showSection("nd");
+    });
+  </script>
 </head>
 <body>
-  <div class="tabs">
-    <a class="tab" href="nd.html">No Derivatives Variant</a>
-    <a class="tab" href="open.html">Open Variant</a>
-    <a class="tab" href="public.html">Public Variant</a>
-  </div>
-  <div class="container">
+  <header>
+    <!-- Replace "logo.png" with your actual logo filename -->
+    <img src="logo.png" alt="Logo">
     <h1>Dash MCL Licenses Repository</h1>
-    <p>This repository contains custom license variants for my Minecraft content (datapacks, mods, and resource packs). Click the tabs above to view the different license variants.</p>
+  </header>
+  
+  <div class="tabs">
+    <div id="tab-nd" class="tab" onclick="showSection('nd')">No Derivatives Variant</div>
+    <div id="tab-open" class="tab" onclick="showSection('open')">Open Variant</div>
+    <div id="tab-public" class="tab" onclick="showSection('public')">Public Variant</div>
   </div>
+  
+  <div class="container">
+    <!-- No Derivatives Section -->
+    <div id="nd" class="section">
+      <h2>Dash MCL ND 1.0 License</h2>
+      <!-- Summary Box -->
+      <div class="box">
+        <div class="box-title">Summary (Not Legally Binding)</div>
+        <p>This summary is provided for quick reference only. Please read the full license text below carefully to ensure it meets your use case. This variant prohibits modifications or public distribution of the original Material without explicit approval.</p>
+      </div>
+      <!-- Full License Text Box -->
+      <div class="box">
+        <div class="box-title">Full License Text</div>
+        <div class="license-text">
+          <iframe src="dash_mcl_nd_1.0_agreement.txt" frameborder="0" style="width:100%; height:100%;"></iframe>
+        </div>
+      </div>
+      <!-- Licensed Materials Box -->
+      <div class="box">
+        <div class="box-title">Licensed Materials</div>
+        <ul class="materials">
+          <li>Material 1</li>
+          <li>Material 2</li>
+          <li>Material 3</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Open Variant Section -->
+    <div id="open" class="section">
+      <h2>Dash MCL Open 1.1 License</h2>
+      <!-- Summary Box -->
+      <div class="box">
+        <div class="box-title">Summary (Not Legally Binding)</div>
+        <p>This summary is provided for quick reference only. Please read the full license text below carefully. This variant permits the creation and distribution of Modified Works under conditions that prevent substantial verbatim copying of the original Material and require proper attribution.</p>
+      </div>
+      <!-- Full License Text Box -->
+      <div class="box">
+        <div class="box-title">Full License Text</div>
+        <div class="license-text">
+          <iframe src="dash_mcl_open_1.0_agreement.txt" frameborder="0" style="width:100%; height:100%;"></iframe>
+        </div>
+      </div>
+      <!-- Licensed Materials Box -->
+      <div class="box">
+        <div class="box-title">Licensed Materials</div>
+        <ul class="materials">
+          <li>Material 1</li>
+          <li>Material 2</li>
+          <li>Material 3</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Public Variant Section -->
+    <div id="public" class="section">
+      <h2>Dash MCL Public 1.0 License</h2>
+      <!-- Summary Box -->
+      <div class="box">
+        <div class="box-title">Summary (Not Legally Binding)</div>
+        <p>This summary is provided for quick reference only. Please review the full license text below. This variant grants broad rights for reproduction, modification, and distribution—including commercial use—provided that proper attribution is given.</p>
+      </div>
+      <!-- Full License Text Box -->
+      <div class="box">
+        <div class="box-title">Full License Text</div>
+        <div class="license-text">
+          <iframe src="dash_mcl_public_1.0_agreement.txt" frameborder="0" style="width:100%; height:100%;"></iframe>
+        </div>
+      </div>
+      <!-- Licensed Materials Box -->
+      <div class="box">
+        <div class="box-title">Licensed Materials</div>
+        <ul class="materials">
+          <li>Material 1</li>
+          <li>Material 2</li>
+          <li>Material 3</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p>Maintained by Gamedash43</p>
+  </footer>
 </body>
 </html>
