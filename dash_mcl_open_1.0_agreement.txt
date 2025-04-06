@@ -1,4 +1,4 @@
-Dash MCL Open 1.1 (Dash Minecraft Content License – Open Variant)
+Dash MCL Open 1.0 (Dash Minecraft Content License – Open Variant)
 ------------------------------------------------------------------
 This License Agreement ("Agreement") is a legal contract between Gamedash43 ("The Creator" or "Licensor") and the user ("Licensee") of the licensed material ("Material"), which includes Minecraft datapacks, mods, and resource packs. By using, installing, modifying, or otherwise interacting with the Material, the Licensee agrees to be bound by all the terms and conditions of this Agreement, unless specific exceptions are granted in writing by The Creator. This Agreement does not create an attorney-client relationship.
 
