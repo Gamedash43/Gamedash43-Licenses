@@ -20,8 +20,8 @@
       font-family: "Roboto", sans-serif;
       margin: 0;
       padding: 0;
-      /* Extra bottom margin so content doesn't overlap the fixed footer */
-      margin-bottom: 60px;
+      /* Extra bottom margin to show background above pinned footer */
+      margin-bottom: 120px;
     }
     
     /* HEADER */
@@ -172,6 +172,7 @@
     .download-btn {
       display: inline-flex;
       align-items: center;
+      gap: 6px;
       background-color: #2a2a2a;
       color: #e0e0e0;
       text-decoration: none;
@@ -183,6 +184,10 @@
     }
     .download-btn:hover {
       background-color: #444;
+    }
+    .download-btn img {
+      width: 20px;
+      height: 20px;
     }
     
     /* MATERIALS LIST */
@@ -254,12 +259,11 @@
     
     document.addEventListener("DOMContentLoaded", () => {
       loadLicenseTexts();
-      // Show the correct tab if there's a hash, otherwise default to "requests"
+      // Make "requests" the default tab if no hash
       const hash = window.location.hash.substring(1);
       if (hash && document.getElementById(hash)) {
         showSection(hash);
       } else {
-        // Make "requests" the default tab
         showSection("requests");
       }
     });
@@ -292,13 +296,13 @@
   </div>
   
   <div class="container">
-    <!-- Requests Section (now first) -->
+    <!-- Requests Section (default if no hash) -->
     <div id="requests" class="section">
       <h2>Requests</h2>
       <div class="box">
         <div class="box-title">Submit a Request</div>
         <p>
-          For formal requests regarding license exceptions or approval from Gamedash43, please submit an issue on the GitHub repository. 
+          For formal requests regarding license exceptions or approval from Gamedash43, please submit an issue on our GitHub repository.  
           Include your project details and the reason for the exception or approval request.
         </p>
         <p>
@@ -340,10 +344,10 @@
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
           <a class="download-btn" href="https://modrinth.com/user/Gamedash43" target="_blank">
-            Modrinth
+            <img src="modrinth.png" alt="Modrinth Icon" /> Modrinth
           </a>
           <a class="download-btn" href="https://www.planetminecraft.com/member/gamedash43/" target="_blank">
-            Planet Minecraft
+            <img src="planetminecraft.png" alt="Planet Minecraft Icon" /> Planet Minecraft
           </a>
         </div>
       </div>
@@ -387,10 +391,10 @@
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
           <a class="download-btn" href="https://modrinth.com/user/Gamedash43" target="_blank">
-            Modrinth
+            <img src="modrinth.png" alt="Modrinth Icon" /> Modrinth
           </a>
           <a class="download-btn" href="https://www.planetminecraft.com/member/gamedash43/" target="_blank">
-            Planet Minecraft
+            <img src="planetminecraft.png" alt="Planet Minecraft Icon" /> Planet Minecraft
           </a>
         </div>
       </div>
@@ -430,10 +434,10 @@
         <div class="box-title">Official Download Pages</div>
         <div class="link-buttons">
           <a class="download-btn" href="https://modrinth.com/user/Gamedash43" target="_blank">
-            Modrinth
+            <img src="modrinth.png" alt="Modrinth Icon" /> Modrinth
           </a>
           <a class="download-btn" href="https://www.planetminecraft.com/member/gamedash43/" target="_blank">
-            Planet Minecraft
+            <img src="planetminecraft.png" alt="Planet Minecraft Icon" /> Planet Minecraft
           </a>
         </div>
       </div>
