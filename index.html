@@ -764,6 +764,9 @@
       fetch("dash_mcl_public_1.0_agreement.txt")
         .then(response => response.text())
         .then(data => { document.getElementById("publicLicenseText").textContent = data; });
+      fetch("dash_mcl_cu_1.0_agreement.txt")
+        .then(response => response.text())
+        .then(data => { document.getElementById("cuLicenseText").textContent = data; });
     }
     
     // Show the specified section and update URL hash.
