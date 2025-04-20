@@ -1,0 +1,50 @@
+Dash MCL CU 1.0 (Dash Minecraft Content License – Commercial Use Variant)
+------------------------------------------------------------------------
+This License Agreement (“Agreement”) is between Gamedash43 (“Creator”) and any user (“Licensee”) of the licensed Material (Minecraft datapacks, mods, resource packs). By using or installing the Material under this Agreement, Licensee agrees to these terms.
+
+------------------------------------------------------------------------
+1. Definitions
+------------------------------------------------------------------------
+Material: Any datapack, mod, or resource pack authored by Creator.
+Licensee: Individual or entity using the Material under this Agreement.
+Commercial Server: Any public or revenue-generating Minecraft server (e.g., via donations, subscriptions, ads, sponsorships).
+Internal Use: Deployment and modification of the Material solely for operation of Licensee’s own server(s) without further distribution.
+
+------------------------------------------------------------------------
+2. License Grant
+------------------------------------------------------------------------
+Creator grants Licensee a non-exclusive, worldwide, non-transferable license to:
+- Use the Material on one or more Commercial Servers.
+- Modify the Material for Internal Use on those servers.
+- Include the Material in public or private modpacks, in original or modified form, without prior approval.
+
+------------------------------------------------------------------------
+3. Permitted Commercial Use
+------------------------------------------------------------------------
+3.1 Server Deployment: Licensee may run, host, and publicly offer gameplay on Commercial Servers using the Material or its internal modifications.
+3.2 Ephemeral Distribution: The Material may be served to connected clients only as needed for gameplay (no permanent client copies).
+3.3 Modpacks: The Material may be included in modpacks, modified or unmodified, and distributed without explicit approval from the Creator.
+
+------------------------------------------------------------------------
+4. Restrictions
+------------------------------------------------------------------------
+4.1 No Redistribution: Licensee may NOT sell, share, upload, or otherwise distribute the Material—or any modified version—outside Licensee’s own servers or included modpacks.
+4.2 No Sublicensing: Licensee may not sublicense the Material or grant third-party installation rights except as part of modpack distribution.
+4.3 No Public Release of Derivatives as Standalone: Any derivative work may be used internally or within modpacks, but may not be released as a standalone download unless expressly authorized.
+
+------------------------------------------------------------------------
+5. Attribution
+------------------------------------------------------------------------
+Crediting the Creator is not required for any use, public or private.
+
+------------------------------------------------------------------------
+6. Term, Warranty & Liability
+------------------------------------------------------------------------
+6.1 Term: Effective upon first use and continues until terminated.
+6.2 Termination: Any breach of Section 4 automatically ends this license and requires Licensee to cease all use.
+6.3 Warranty Disclaimer: Material is provided “as-is,” without warranty. Creator is not liable for damages arising from use.
+6.4 Governing Law: This Agreement is governed by the laws of the United States.
+
+------------------------------------------------------------------------
+End of Dash MCL CU 1.0
+------------------------------------------------------------------------
